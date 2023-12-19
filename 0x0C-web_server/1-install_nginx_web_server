@@ -2,10 +2,13 @@
 #installs nginx and configure it to listen on port 80
 #print "Hello World"
 
-sudo apt-get update -y
-sudo apt-get upgrade -y
-sudo apt-get -y install nginx
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install nginx
 service nginx start
+sudo ufw 'Nginx HTTP'
+sud nginx -t
+sudo service nginx reload
 
 sudo mkdir /var/www/html
 
