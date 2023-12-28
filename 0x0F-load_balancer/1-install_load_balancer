@@ -7,15 +7,21 @@ sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo apt-get -y install haproxy
 
-echo "frontend ogetatonny.com.ng
-        bind 0:80
-        default_backend ogetatony.com.ng_backend
+echo "frontend ogetadom.tech.ng
+    bind 0:80
+    default_backend ogetadom.tech.ng_backend
 
-backend ogetatony.com.ng_backend
-        balance roundrobin
-        server hostname hostIP:PORT check
-        server 97266-web-01 54.236.12.190 check
-        server 97266-web-02 54.90.17.84 check
+backend ogetadom.tech.ng_backend
+    balance roundrobin
+    server 97266-web-01 54.236.12.190
+    server 97266-web-02 54.90.17.84
 " >> /etc/haproxy/haproxy.cfg
 
 sudo service haproxy start
+#checking for syntax errors
+
+haproxy -c -f /etc/haproxy/haproxy.cf
+
+# restarting haproxy
+
+sudo systemctl restart haproxy
