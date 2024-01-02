@@ -6,7 +6,9 @@ sudo ufw allow 'Nginx HTTP'
 
 echo "Hello World!" | /var/www/html/index.html
 
+string_for_replacement="server_name_;\n\trewrite ^\/redirect_me https:\/\/github.com\/ogetatonny permanent;"
 
+sudo sed -i "s/server_name_;/$string_for_replacement/" /etc/nginx/sites-enabled/default
 
 #creating a 404 error page
 echo "ceci n'est pas une page" | sudo tee /var/www/html/404.html
